@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import AppRoutes from './components/AppRoutes';
+import { useAppSelector } from './hooks/useAppSelector';
+import loader from "./assets/loader.png"
+import { useDispatch } from 'react-redux';
+import { checkAuth } from './redux/thunks/users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+const App = () => {
+  const { isLoading } = useAppSelector(state => state.user)
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(checkAuth() as any)
+  }, [dispatch])
+
+
+
+  if (isLoading) {
+    return <div className="flex h-full flex-col flex-auto justify-center items-center">
+      <img src={loader} alt="loading"
+        className="w-20 h-20 object-contain animate-pulse transition-all" />
     </div>
+  }
+
+
+  return (
+    <>
+      <AppRoutes />
+    </>
   );
-}
+};
 
 export default App;
