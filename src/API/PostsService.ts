@@ -1,5 +1,6 @@
 import { $instance } from ".";
 import { IPost } from "../types/DBmodels";
+import { ILikeResponse } from "../types/posts";
 
 
 export class PostsService {
@@ -17,6 +18,17 @@ export class PostsService {
 
     static async deletePost(id: string): Promise<IPost> {
         const { data } = await $instance.delete(`/posts/${id}`)
+        return data
+    }
+
+
+    static async like(id: string): Promise<ILikeResponse> {
+        const { data } = await $instance.post(`/posts/like/${id}`)
+        return data
+    }
+
+    static async unlike(id: string): Promise<ILikeResponse> {
+        const { data } = await $instance.delete(`/posts/unlike/${id}`)
         return data
     }
 }

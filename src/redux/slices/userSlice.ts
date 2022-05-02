@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../types/DBmodels";
 import { IUserState } from "../../types/users";
-import { checkAuth, logout, signIn, signUp } from "../thunks/users";
+import { checkAuth, fetchRecomendations, logout, signIn, signUp } from "../thunks/user";
+
 
 
 const initialState: IUserState = {
@@ -11,7 +12,8 @@ const initialState: IUserState = {
     posts: [],
     signinError: '',
     isLoading: true,
-    signupError: ''
+    signupError: '',
+    recomendations: []
 }
 
 
@@ -75,6 +77,11 @@ const userSlice = createSlice({
             state.posts = []
             state.signinError = ""
             state.signupError = ''
+        },
+
+
+        [fetchRecomendations.fulfilled.type]: (state, action: PayloadAction<IUser[]>) => {
+            state.recomendations = action.payload
         },
     }
 })

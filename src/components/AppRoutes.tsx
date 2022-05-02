@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
 import { useAppSelector } from '../hooks/useAppSelector';
+import Edit from '../pages/Edit';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
@@ -12,6 +13,7 @@ export enum AllRoutes {
     signup = "/signup",
     signin = "/signin",
     profile = "/profile",
+    edit = "/edit"
 }
 
 const AppRoutes = () => {
@@ -25,8 +27,7 @@ const AppRoutes = () => {
     ]
 
     const privateRoutes = [
-        { path: AllRoutes.home, elem: <Home /> },
-        { path: AllRoutes.profile + "/:id", elem: <Profile /> },
+        { path: AllRoutes.edit + "/:id", elem: <Edit /> }
     ]
 
     return (

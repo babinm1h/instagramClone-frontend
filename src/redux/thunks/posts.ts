@@ -64,3 +64,29 @@ export const deletePost = createAsyncThunk(PostsThunkPrefixes.delete_post,
             return thunk.rejectWithValue(err.response.data.message)
         }
     })
+
+
+
+
+export const likePost = createAsyncThunk(PostsThunkPrefixes.like,
+    async (id: string, thunk) => {
+        try {
+            const data = await PostsService.like(id)
+            return data
+
+        } catch (err: any) {
+            return thunk.rejectWithValue(err.response.data.message)
+        }
+    })
+
+
+export const unlikePost = createAsyncThunk(PostsThunkPrefixes.unlike,
+    async (id: string, thunk) => {
+        try {
+            const data = await PostsService.unlike(id)
+            return data
+
+        } catch (err: any) {
+            return thunk.rejectWithValue(err.response.data.message)
+        }
+    })

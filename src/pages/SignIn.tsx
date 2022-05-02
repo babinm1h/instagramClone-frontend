@@ -6,7 +6,7 @@ import logo from "../assets/logo.png"
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../hooks/useAppSelector';
-import { signIn } from '../redux/thunks/users';
+import { signIn } from '../redux/thunks/user';
 import { validate } from '../utils/validate';
 
 

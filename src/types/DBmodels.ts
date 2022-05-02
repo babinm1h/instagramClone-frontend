@@ -17,9 +17,9 @@ export interface IUser {
     img: string
 
     posts: IPost[]
-    likes: IPost
-    followers: IUser
-    follows: IUser
+    likes: string[]
+    followers: string[]
+    follows: string[]
     _id: string
 }
 

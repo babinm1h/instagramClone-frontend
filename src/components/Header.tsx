@@ -27,10 +27,14 @@ const Header = () => {
                 <div className="flex justify-between max-w-6xl w-full items-center lg:mx-auto">
 
                     <div className="relative hidden lg:inline-grid cursor-pointer">
-                        <img src={logo} alt="logo" className="w-[100px] object-contain" />
+                        <NavLink to={AllRoutes.home}>
+                            <img src={logo} alt="logo" className="w-[100px] object-contain" />
+                        </NavLink>
                     </div>
                     <div className="relative lg:hidden cursor-pointer w-12 h-12 flex-shrink-0 mb-2">
-                        <img src={mobLogo} alt="logo" className="object-contain" />
+                        <NavLink to={AllRoutes.home}>
+                            <img src={mobLogo} alt="logo" className="object-contain" />
+                        </NavLink>
                     </div>
 
 
@@ -44,7 +48,7 @@ const Header = () => {
 
                     {isAuth
                         ? <div className="flex items-center gap-4">
-                            <HomeIcon className="navBtn " />
+                            <NavLink to={AllRoutes.home}><HomeIcon className="navBtn " /></NavLink>
                             <PaperAirplaneIcon className="navBtn rotate-45" />
                             <HeartIcon className="navBtn" />
                             <PlusCircleIcon className="navBtn" onClick={onOpen} />

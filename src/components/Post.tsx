@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { BookmarkIcon, ChatIcon, DotsHorizontalIcon, EmojiHappyIcon, HeartIcon, PaperAirplaneIcon } from '@heroicons/react/outline';
+import { HeartIcon as HeartFilled } from "@heroicons/react/solid"
 import { NavLink } from 'react-router-dom';
 import { IPost } from '../types/DBmodels';
 import { AllRoutes } from './AppRoutes';
@@ -7,9 +8,10 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import Comments from './Comments';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { createComment, deletePost } from '../redux/thunks/posts';
+import { createComment, deletePost, likePost, unlikePost } from '../redux/thunks/posts';
 import { validate } from '../utils/validate';
 import Modal from './Modal';
+
 
 interface IPostProps {
     item: IPost
@@ -27,7 +29,7 @@ const Post: FC<IPostProps> = ({ item }) => {
 
     const dispatch = useDispatch()
     const { isAuth, user } = useAppSelector(state => state.user)
-    const { isAdding, isDeleting } = useAppSelector(state => state.posts)
+    const { isAddingComm, isDeleting, isLiking } = useAppSelector(state => state.posts)
 
     const { register, handleSubmit, reset } = useForm<IFormFields>()
 
@@ -43,14 +45,28 @@ const Post: FC<IPostProps> = ({ item }) => {
         }
     }
 
+
+    const handleLike = () => {
+        dispatch(likePost(item._id) as any)
+    }
+
+    const handleUnlike = () => {
+        dispatch(unlikePost(item._id) as any)
+    }
+
     return (
         <li className="flex flex-col shadow-sm shadow-gray-400 bg-white">
             <div className="p-4 flex items-center">
                 <div className="flex items-center flex-auto">
-                    <img src={item.user.img} alt="user"
-                        className="h-8 w-8 object-contain rounded-[50%]" />
+                    <NavLink to={AllRoutes.profile + `/${item.user._id}`}>
+                        <img src={item.user.img} alt="user"
+                            className="h-8 w-8 object-contain rounded-[50%]" />
+                    </NavLink>
                     <div className="ml-3">
-                        <p className="font-bold">{item.user.username}</p>
+                        <NavLink to={AllRoutes.profile + `/${item.user._id}`}
+                            className="font-bold hover:underline">
+                            {item.user.username}
+                        </NavLink>
                         <p className="text-xs text-mainGray">{item.user.email}</p>
                     </div>
                 </div>
@@ -66,17 +82,30 @@ const Post: FC<IPostProps> = ({ item }) => {
 
             {isAuth && <div className="flex items-center p-4">
                 <div className="flex items-center gap-4 flex-1">
+
                     <span className="flex items-center">
-                        <HeartIcon className="postBtn" />
-                        {item.likes.length < 1 && <span className="font-semibold ml-2">
+                        {item.likes.includes(user!._id)
+                            ? <button onClick={handleUnlike} disabled={isLiking}>
+                                <HeartFilled className="postBtn text-red-700" />
+                            </button>
+                            : <button onClick={handleLike} disabled={isLiking}>
+                                <HeartIcon className="postBtn" />
+                            </button>}
+
+                        <span className="font-semibold ml-2">
                             {item.likes.length}
-                        </span>}
+                        </span>
                     </span>
-                    <ChatIcon className="postBtn" />
+                    <span className="flex items-center">
+                        <ChatIcon className="postBtn" />
+                        <span className="ml-2 font-semibold">{item.comments.length}</span>
+                    </span>
                     <PaperAirplaneIcon className="postBtn rotate-[45deg]" />
+
                 </div>
                 <BookmarkIcon className="postBtn" />
             </div>}
+
 
             <div className="px-4 truncate py-2">
                 <NavLink to={AllRoutes.profile + `/${item.user._id}`}
@@ -96,7 +125,7 @@ const Post: FC<IPostProps> = ({ item }) => {
                     <input type="text" className="flex-1" placeholder="New comment..."
                         {...register("text", validate(100, 1))} />
                     <button className="text-mainBlue font-semibold disabled:opacity-40"
-                        disabled={isAdding}>
+                        disabled={isAddingComm}>
                         Comment
                     </button>
                 </form>

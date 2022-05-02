@@ -103,4 +103,13 @@ button:disabled{
     @apply flex items-center border-b border-borderGray justify-center py-4 
     hover:bg-gray-200 transition-colors
   }
+  .profileBtn{
+    @apply border border-gray-300 h-7 px-8 hover:border-gray-500 transition-all duration-150 ease-out rounded-sm
+  }
+  .profilePost{
+    @apply w-full h-full max-h-[290px] max-w-[290px] relative
+  }
+  .profilePost:hover .postOverlay{
+    @apply flex
+  }
 }

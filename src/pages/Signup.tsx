@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png"
 import { AllRoutes } from '../components/AppRoutes';
 import { useAppSelector } from '../hooks/useAppSelector';
-import { signUp } from '../redux/thunks/users';
+import { signUp } from '../redux/thunks/user';
 import FormControl from '../UI/FormControl';
 import { validate } from '../utils/validate';
 

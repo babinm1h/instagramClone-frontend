@@ -3,11 +3,11 @@ import AppRoutes from './components/AppRoutes';
 import { useAppSelector } from './hooks/useAppSelector';
 import loader from "./assets/loader.png"
 import { useDispatch } from 'react-redux';
-import { checkAuth } from './redux/thunks/users';
+import { checkAuth, fetchRecomendations } from './redux/thunks/user';
 
 
 const App = () => {
-  const { isLoading } = useAppSelector(state => state.user)
+  const { isLoading, isAuth } = useAppSelector(state => state.user)
   const dispatch = useDispatch()
 
 
@@ -15,6 +15,10 @@ const App = () => {
     dispatch(checkAuth() as any)
   }, [dispatch])
 
+
+  useEffect(() => {
+    if (isAuth) dispatch(fetchRecomendations() as any)
+  }, [isAuth, dispatch])
 
 
   if (isLoading) {

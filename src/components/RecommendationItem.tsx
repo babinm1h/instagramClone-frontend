@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+import { IUser } from '../types/DBmodels';
+import { AllRoutes } from './AppRoutes';
 
-const RecommendationItem = () => {
+interface IRecomendationItemProps {
+    item: IUser
+}
+
+const RecommendationItem: FC<IRecomendationItemProps> = ({ item }) => {
     return (
         <li className="flex items-center gap-4 mt-4">
             <div className="w-8 h-8">
-                <img src="https://avatars.cloudflare.steamstatic.com/b05158dcd21d357e24bb0799980c6568c4c97df8_full.jpg" alt="user"
-                    className="object-contain rounded-[50%]" />
+                <NavLink to={AllRoutes.profile + `/${item._id}`}>
+                    <img src={item.img} alt="user"
+                        className="object-contain rounded-[50%]" />
+                </NavLink>
             </div>
 
             <div className="flex-1">
-                <p className="font-semibold">m1hailcsgod</p>
+                <NavLink to={AllRoutes.profile + `/${item._id}`}
+                    className="font-semibold truncate max-w-[160px] hover:underline">
+                    {item.username}
+                </NavLink>
             </div>
-
-            <button className="text-mainBlue text-xs disabled:opacity-40">
-                Follow
-            </button>
         </li>
     );
 };

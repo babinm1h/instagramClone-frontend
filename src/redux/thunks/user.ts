@@ -53,3 +53,15 @@ export const logout = createAsyncThunk(UsersThunkPrefixes.logout,
             return thunk.rejectWithValue(err.response.data.message)
         }
     })
+
+
+export const fetchRecomendations = createAsyncThunk(UsersThunkPrefixes.fetch_recomendations,
+    async (_, thunk) => {
+        try {
+            const data = await UsersService.fetchRecomendations()
+            return data
+
+        } catch (err: any) {
+            return thunk.rejectWithValue(err.response.data.message)
+        }
+    })

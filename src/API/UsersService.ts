@@ -25,4 +25,15 @@ export class UsersService {
         return data
     }
 
+
+    static async fetchOne(id: string): Promise<IUser> {
+        const { data } = await $instance.get(`/users/${id}`)
+        return data
+    }
+
+
+    static async fetchRecomendations(): Promise<IUser> {
+        const { data } = await $instance.get(`/users/user/recomendations`)
+        return data
+    }
 }

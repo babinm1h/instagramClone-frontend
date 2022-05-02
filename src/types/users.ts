@@ -8,6 +8,7 @@ export interface IUserState {
     signinError: string
     signupError: string
     posts: IPost[]
+    recomendations: IUser[]
     isLoading: boolean
 }
 
@@ -17,4 +18,5 @@ export enum UsersThunkPrefixes {
     signin = "user/signin",
     check = "user/check",
     logout = "user/logout",
+    fetch_recomendations = "user/fetch_recomendations"
 }

@@ -1,7 +1,11 @@
 import React from 'react';
+import { useAppSelector } from '../hooks/useAppSelector';
 import RecommendationItem from './RecommendationItem';
 
 const Recommendations = () => {
+
+    const { recomendations, user } = useAppSelector(state => state.user)
+
     return (
         <div className="mt-5">
             <div className="flex items-center justify-between">
@@ -9,7 +13,8 @@ const Recommendations = () => {
                 <span>All</span>
             </div>
             <ul className="flex flex-col">
-                {[...Array(5)].map(i => <RecommendationItem />)}
+                {recomendations.filter(r => r._id !== user?._id)
+                    .map(r => <RecommendationItem item={r} key={r._id} />)}
             </ul>
         </div>
     );
