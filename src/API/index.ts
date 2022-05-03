@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const $instance = axios.create({
-    baseURL: "http://localhost:7777/api",
+    baseURL: "https://insta-cl0ne.herokuapp.com/",
     withCredentials: true
 })
 
