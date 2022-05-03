@@ -1,5 +1,6 @@
 import { $instance } from ".";
 import { IUser } from "../types/DBmodels";
+import { IUpdateProfileResponse } from "../types/user";
 
 
 
@@ -34,6 +35,12 @@ export class UsersService {
 
     static async fetchRecomendations(): Promise<IUser> {
         const { data } = await $instance.get(`/users/user/recomendations`)
+        return data
+    }
+
+
+    static async updateProfile(fd: FormData): Promise<IUpdateProfileResponse> {
+        const { data } = await $instance.post(`/profile/update`, fd)
         return data
     }
 }

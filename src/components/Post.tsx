@@ -60,7 +60,7 @@ const Post: FC<IPostProps> = ({ item }) => {
                 <div className="flex items-center flex-auto">
                     <NavLink to={AllRoutes.profile + `/${item.user._id}`}>
                         <img src={item.user.img} alt="user"
-                            className="h-8 w-8 object-contain rounded-[50%]" />
+                            className="h-8 w-8 object-cover rounded-[50%]" />
                     </NavLink>
                     <div className="ml-3">
                         <NavLink to={AllRoutes.profile + `/${item.user._id}`}

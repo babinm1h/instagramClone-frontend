@@ -47,7 +47,7 @@ const Profile = () => {
                 <section className="flex gap-10 border-b border-gray-300 pb-10 px-4">
                     <div className="flex-shrink-0">
                         <img src={user?.img} alt="user"
-                            className="h-[150px] w-[150px] object-contain rounded-[50%] border border-mainGray p-[2px]" />
+                            className="h-[150px] w-[150px] object-cover rounded-[50%] border border-mainGray p-[2px]" />
                     </div>
 
                     <div className="md:pl-[30px]">

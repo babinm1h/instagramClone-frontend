@@ -16,10 +16,10 @@ const MiniProfile = () => {
 
     return (
         <div className="flex items-center gap-5">
-            <div className="h-14 w-14">
+            <div className="">
                 <NavLink to={AllRoutes.profile + `/${user?._id}`}>
                     <img src={user?.img} alt="user"
-                        className="object-contain rounded-[50%] border border-mainGray" />
+                        className="object-cover rounded-[50%] border border-mainGray h-14 w-14" />
                 </NavLink>
             </div>
 

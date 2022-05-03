@@ -112,4 +112,7 @@ button:disabled{
   .profilePost:hover .postOverlay{
     @apply flex
   }
+  .editBlock{
+    @apply items-center flex gap-5 mb-5
+  }
 }

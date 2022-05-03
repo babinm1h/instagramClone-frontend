@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UsersService } from "../../API/UsersService";
-import { UsersThunkPrefixes } from "../../types/users";
+import { UsersThunkPrefixes } from "../../types/user";
 
 
 export const signUp = createAsyncThunk(UsersThunkPrefixes.signup,
@@ -59,6 +59,18 @@ export const fetchRecomendations = createAsyncThunk(UsersThunkPrefixes.fetch_rec
     async (_, thunk) => {
         try {
             const data = await UsersService.fetchRecomendations()
+            return data
+
+        } catch (err: any) {
+            return thunk.rejectWithValue(err.response.data.message)
+        }
+    })
+
+
+export const updateProfile = createAsyncThunk(UsersThunkPrefixes.update_profile,
+    async (formData: FormData, thunk) => {
+        try {
+            const data = await UsersService.updateProfile(formData)
             return data
 
         } catch (err: any) {

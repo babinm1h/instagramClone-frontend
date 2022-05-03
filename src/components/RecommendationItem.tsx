@@ -10,10 +10,10 @@ interface IRecomendationItemProps {
 const RecommendationItem: FC<IRecomendationItemProps> = ({ item }) => {
     return (
         <li className="flex items-center gap-4 mt-4">
-            <div className="w-8 h-8">
+            <div className="">
                 <NavLink to={AllRoutes.profile + `/${item._id}`}>
                     <img src={item.img} alt="user"
-                        className="object-contain rounded-[50%]" />
+                        className="object-cover rounded-[50%] w-8 h-8" />
                 </NavLink>
             </div>
 

@@ -10,6 +10,8 @@ export interface IUserState {
     posts: IPost[]
     recomendations: IUser[]
     isLoading: boolean
+    updateError: string
+    isUpdating: boolean
 }
 
 
@@ -18,5 +20,12 @@ export enum UsersThunkPrefixes {
     signin = "user/signin",
     check = "user/check",
     logout = "user/logout",
-    fetch_recomendations = "user/fetch_recomendations"
+    fetch_recomendations = "user/fetch_recomendations",
+    update_profile = "user/update_profile"
+}
+
+
+export interface IUpdateProfileResponse {
+    img?: string
+    user: IUser
 }

@@ -13,7 +13,7 @@ const Comment: FC<ICommentProps> = ({ comment }) => {
         <li className="mb-4">
             <div className="flex items-center gap-2">
                 <img src={comment.user.img} alt="user"
-                    className="w-5 h-5 object-contain rounded-[50%]" />
+                    className="w-5 h-5 object-cover rounded-[50%]" />
                 <NavLink to={AllRoutes.profile + `/${comment.user._id}`} className="font-bold truncate max-w-[100px] flex-shrink-0">
                     {comment.user.username}
                 </NavLink>
