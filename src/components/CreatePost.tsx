@@ -55,7 +55,7 @@ const CreatePost: FC<ICreatePostProps> = ({ onClose }) => {
             <div className="flex items-center flex-col">
                 <div className="mb-3">
                     <img alt="img"
-                        src={preview ? preview : 'https://www.haleftatli.com/assets/images/default.png'} className="object-contain w-full h-52" />
+                        src={preview ? preview : 'https://www.haleftatli.com/assets/images/default.png'} className="object-contain w-full md:h-52 h-40" />
                 </div>
 
                 <button className="bg-mainBlue text-white rounded-md h-[30px] px-3 transition-colors hover:bg-opacity-80" onClick={() => fileRef.current?.click()}>

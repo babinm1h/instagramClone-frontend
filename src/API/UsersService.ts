@@ -33,7 +33,7 @@ export class UsersService {
     }
 
 
-    static async fetchRecomendations(): Promise<IUser> {
+    static async fetchRecomendations(): Promise<IUser[]> {
         const { data } = await $instance.get(`/users/user/recomendations`)
         return data
     }
@@ -41,6 +41,12 @@ export class UsersService {
 
     static async updateProfile(fd: FormData): Promise<IUpdateProfileResponse> {
         const { data } = await $instance.post(`/profile/update`, fd)
+        return data
+    }
+
+
+    static async searchUsers(search: string): Promise<IUser[]> {
+        const { data } = await $instance.get(`/users/search`, { params: { search } })
         return data
     }
 }

@@ -12,6 +12,7 @@ export interface IUserState {
     isLoading: boolean
     updateError: string
     isUpdating: boolean
+    searchedUsers: IUser[]
 }
 
 
@@ -21,7 +22,8 @@ export enum UsersThunkPrefixes {
     check = "user/check",
     logout = "user/logout",
     fetch_recomendations = "user/fetch_recomendations",
-    update_profile = "user/update_profile"
+    update_profile = "user/update_profile",
+    search_users = "user/search_users"
 }
 
 

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../types/DBmodels";
 import { IUpdateProfileResponse, IUserState } from "../../types/user";
-import { checkAuth, fetchRecomendations, logout, signIn, signUp, updateProfile } from "../thunks/user";
+import { checkAuth, fetchRecomendations, logout, searchUsers, signIn, signUp, updateProfile } from "../thunks/user";
 
 
 
@@ -15,7 +15,8 @@ const initialState: IUserState = {
     signupError: '',
     recomendations: [],
     updateError: "",
-    isUpdating: false
+    isUpdating: false,
+    searchedUsers: [],
 }
 
 
@@ -103,6 +104,14 @@ const userSlice = createSlice({
         [updateProfile.rejected.type]: (state, action: PayloadAction<string>) => {
             state.updateError = action.payload
             state.isUpdating = false
+        },
+
+
+        [searchUsers.fulfilled.type]: (state, action: PayloadAction<IUser[]>) => {
+            state.searchedUsers = action.payload
+        },
+        [searchUsers.pending.type]: (state, action) => {
+
         },
     }
 })

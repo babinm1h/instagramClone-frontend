@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
 import Signup from '../pages/Signup';
+import Users from '../pages/Users';
 
 
 export enum AllRoutes {
@@ -13,7 +14,8 @@ export enum AllRoutes {
     signup = "/signup",
     signin = "/signin",
     profile = "/profile",
-    edit = "/edit"
+    edit = "/edit",
+    users = "/users"
 }
 
 const AppRoutes = () => {
@@ -24,6 +26,7 @@ const AppRoutes = () => {
         { path: AllRoutes.signup, elem: <Signup /> },
         { path: AllRoutes.home, elem: <Home /> },
         { path: AllRoutes.profile + "/:id", elem: <Profile /> },
+        { path: AllRoutes.users + "/:search", elem: <Users /> }
     ]
 
     const privateRoutes = [

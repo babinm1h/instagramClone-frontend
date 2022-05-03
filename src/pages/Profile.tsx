@@ -73,7 +73,7 @@ const Profile = () => {
                         </div>}
 
 
-                        <div className="my-6 flex items-center gap-7 text-lg">
+                        <div className="my-6 flex items-center gap-7 sm:text-lg">
                             <span className="">{user?.posts.length} posts</span>
                             <span className="">{user?.followers.length} followers</span>
                         </div>

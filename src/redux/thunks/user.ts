@@ -77,3 +77,15 @@ export const updateProfile = createAsyncThunk(UsersThunkPrefixes.update_profile,
             return thunk.rejectWithValue(err.response.data.message)
         }
     })
+
+
+export const searchUsers = createAsyncThunk(UsersThunkPrefixes.update_profile,
+    async (search: string, thunk) => {
+        try {
+            const data = await UsersService.searchUsers(search)
+            return data
+
+        } catch (err: any) {
+            return thunk.rejectWithValue(err.response.data.message)
+        }
+    })

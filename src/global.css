@@ -115,4 +115,7 @@ button:disabled{
   .editBlock{
     @apply items-center flex gap-5 mb-5
   }
+  .navLink{
+    @apply py-2 hover:bg-gray-200 w-full transition-all text-center border-b border-borderGray
+  }
 }

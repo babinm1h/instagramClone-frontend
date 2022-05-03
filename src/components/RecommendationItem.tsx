@@ -13,7 +13,7 @@ const RecommendationItem: FC<IRecomendationItemProps> = ({ item }) => {
             <div className="">
                 <NavLink to={AllRoutes.profile + `/${item._id}`}>
                     <img src={item.img} alt="user"
-                        className="object-cover rounded-[50%] w-8 h-8" />
+                        className="object-cover rounded-[50%] w-10 h-10" />
                 </NavLink>
             </div>
 
@@ -22,6 +22,7 @@ const RecommendationItem: FC<IRecomendationItemProps> = ({ item }) => {
                     className="font-semibold truncate max-w-[160px] hover:underline">
                     {item.username}
                 </NavLink>
+                <p className="text-mainGray text-xs">{item.email}</p>
             </div>
         </li>
     );
