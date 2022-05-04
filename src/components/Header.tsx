@@ -42,7 +42,7 @@ const Header = () => {
                             <img src={logo} alt="logo" className="w-[100px] object-contain" />
                         </NavLink>
                     </div>
-                    <div className="relative lg:hidden cursor-pointer w-12 h-12 flex-shrink-0 mb-2">
+                    <div className="relative lg:hidden cursor-pointer w-12 h-12 flex-shrink-0 mb-[2px]">
                         <NavLink to={AllRoutes.home}>
                             <img src={mobLogo} alt="logo" className="object-contain" />
                         </NavLink>
