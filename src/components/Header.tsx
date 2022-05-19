@@ -67,7 +67,9 @@ const Header = () => {
                                 : <MenuIcon className="w-6 h-6 md:hidden cursor-pointer"
                                     onClick={toggleNav} />}
 
-                            <img src={user?.img} alt="user" className="cursor-pointer w-7 h-7 rounded-[50%] object-cover" />
+                            <NavLink to={AllRoutes.profile + `/${user?._id}`}>
+                                <img src={user?.img} alt="user" className="cursor-pointer w-7 h-7 rounded-[50%] object-cover" />
+                            </NavLink>
                         </div>
 
                         : <NavLink to={AllRoutes.signin}>
