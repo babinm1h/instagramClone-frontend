@@ -51,11 +51,11 @@ const Profile = () => {
                     </div>
 
                     <div className="md:pl-[30px]">
-                        {isAuth && <div className="items-start flex-col flex md:items-center md:flex-row gap-5">
+                        <div className="items-start flex-col flex md:items-center md:flex-row gap-5">
                             <h2 className="text-2xl font-light truncate max-w-[200px]">
                                 {user?.username}
                             </h2>
-                            {user?._id === loggedUser?._id
+                            {isAuth && user?._id === loggedUser?._id
                                 ? <button className="profileBtn" onClick={onEditClick}>
                                     Edit profile
                                 </button>
@@ -70,7 +70,7 @@ const Profile = () => {
                                             Follow
                                         </button>}
                                 </>}
-                        </div>}
+                        </div>
 
 
                         <div className="my-6 sm:flex items-center gap-7 sm:text-lg">
