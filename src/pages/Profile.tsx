@@ -55,21 +55,23 @@ const Profile = () => {
                             <h2 className="text-2xl font-light truncate max-w-[200px]">
                                 {user?.username}
                             </h2>
-                            {isAuth && user?._id === loggedUser?._id
-                                ? <button className="profileBtn" onClick={onEditClick}>
-                                    Edit profile
-                                </button>
-                                : <>
-                                    {user?.followers.includes(loggedUser!._id)
-                                        ? <button className="profileBtn" disabled={isFollowing}
-                                            onClick={handleUnfollow}>
-                                            Unfollow
-                                        </button>
-                                        : <button className="profileBtn" disabled={isFollowing}
-                                            onClick={handleFollow}>
-                                            Follow
-                                        </button>}
-                                </>}
+                            {isAuth && <div className="flex items-center gap-5">
+                                {user?._id === loggedUser?._id
+                                    ? <button className="profileBtn" onClick={onEditClick}>
+                                        Edit profile
+                                    </button>
+                                    : <>
+                                        {user?.followers.includes(loggedUser!._id)
+                                            ? <button className="profileBtn" disabled={isFollowing}
+                                                onClick={handleUnfollow}>
+                                                Unfollow
+                                            </button>
+                                            : <button className="profileBtn" disabled={isFollowing}
+                                                onClick={handleFollow}>
+                                                Follow
+                                            </button>}
+                                    </>}
+                            </div>}
                         </div>
 
 
